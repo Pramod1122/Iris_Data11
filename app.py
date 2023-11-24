@@ -21,7 +21,7 @@ def iris_pred():
     PetalLengthCm = eval(data["PetalLengthCm"])
     PetalWidthCm = eval(data["PetalWidthCm"])
     
-    result=ml_model.predict([[SepalLengthCm ,SepalWidthCm, PetalLengthCm,  PetalWidthCm ]])
+    result=ml_model.predict([[SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm]])
     
     if result[0] == 2:
         iris_flower = "Iris-virginica" 
