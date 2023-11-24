@@ -16,7 +16,7 @@ def iris_pred():
         
     data=request.args.get("name") 
       
-    SepalLengthCm = eval(data["SepalLengthCm"])
+    SepalLengthCm = (data["SepalLengthCm"])
     SepalWidthCm = eval(data["SepalWidthCm"])
     PetalLengthCm = eval(data["PetalLengthCm"])
     PetalWidthCm = eval(data["PetalWidthCm"])
