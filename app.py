@@ -7,19 +7,20 @@ app=Flask(__name__)
 def index():
     return render_template("home.html")
 
-@app.route('/pred',methods=["GET"])
+@app.route('/pred',methods=["POST"])
 def iris_pred():
     
     
     with open("logistic_model.pkl","rb") as model:
         ml_model=pickle.load(model)
         
-    data=request.args.get("name") 
-    print("data",data) 
-    SepalLengthCm = float(data["SepalLengthCm"])
-    SepalWidthCm = float(data["SepalWidthCm"])
-    PetalLengthCm = float(data["PetalLengthCm"])
-    PetalWidthCm = float(data["PetalWidthCm"])
+    data=request.form 
+    
+    
+    SepalLengthCm = eval(data["SepalLengthCm"])
+    SepalWidthCm = eval(data["SepalWidthCm"])
+    PetalLengthCm = eval(data["PetalLengthCm"])
+    PetalWidthCm = eval(data["PetalWidthCm"])
     
     result=ml_model.predict([[SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm]])
     
@@ -30,10 +31,10 @@ def iris_pred():
     if result[0] == 1:
         iris_flower = "Iris-versicolor"
         
-    return iris_flower
+    return jsonify({"result": f"Flower is {iris_flower}"})
 @app.route('/welcome')
 def index1():
     return "Welcome to Velocity"
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False,host="0.0.0.0")
