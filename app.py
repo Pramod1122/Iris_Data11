@@ -15,7 +15,7 @@ def iris_pred():
         ml_model=pickle.load(model)
         
     data=request.args.get("name") 
-      
+    print("data",data) 
     SepalLengthCm = float(data["SepalLengthCm"])
     SepalWidthCm = float(data["SepalWidthCm"])
     PetalLengthCm = float(data["PetalLengthCm"])
