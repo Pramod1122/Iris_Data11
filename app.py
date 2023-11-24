@@ -16,10 +16,10 @@ def iris_pred():
         
     data=request.args.get("name") 
       
-    SepalLengthCm = (data["SepalLengthCm"])
-    SepalWidthCm = eval(data["SepalWidthCm"])
-    PetalLengthCm = eval(data["PetalLengthCm"])
-    PetalWidthCm = eval(data["PetalWidthCm"])
+    SepalLengthCm = float(data["SepalLengthCm"])
+    SepalWidthCm = float(data["SepalWidthCm"])
+    PetalLengthCm = float(data["PetalLengthCm"])
+    PetalWidthCm = float(data["PetalWidthCm"])
     
     result=ml_model.predict([[SepalLengthCm,SepalWidthCm,PetalLengthCm,PetalWidthCm]])
     
